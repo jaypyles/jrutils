@@ -3,20 +3,22 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
+///Creates a directory if it does not exist
 pub fn create_dir_if_not_exists(dir: &Path) {
     let d = dir.clone();
 
     if !d.is_dir() {
         let created_dir = create_dir_all(d);
         match created_dir {
-            Ok(val) => {}
-            Err(error) => {
+            Ok(_) => {}
+            Err(_) => {
                 println!("Error creating directory!");
             }
         }
     }
 }
 
+/// Creates a file if it does not exist and writes content to it
 pub fn create_file_if_not_exists(file_path: &Path, contents: &str) {
     let f = file_path.clone();
 
